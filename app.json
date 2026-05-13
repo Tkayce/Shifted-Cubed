@@ -1,0 +1,49 @@
+{
+  "expo": {
+    "name": "Shift-Cubed",
+    "slug": "Shift-Cubed",
+    "version": "1.0.0",
+    "orientation": "default",
+    "icon": "./assets/images/Shifted-Cubed.png",
+    "scheme": "shiftcubed",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "icon": "./assets/images/Shifted-Cubed.png"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/Shifted-Cubed.png",
+        "backgroundColor": "#E6F4FE"
+      },
+      "predictiveBackGestureEnabled": false,
+      "package": "com.dreh.ShiftCubed.game"
+    },
+    "web": {
+      "output": "static",
+      "favicon": "./assets/images/Shifted-Cubed.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#18191a",
+          "android": {
+            "image": "./assets/images/Shifted-Cubed.png",
+            "imageWidth": 76
+          }
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "1b5a4e1a-344d-49ec-b29a-d147cf46a6b7"
+      }
+    }
+  }
+}
