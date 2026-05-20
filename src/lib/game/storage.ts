@@ -1,6 +1,5 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import type { SessionStats, SettingsState } from "./types";
-
-const memoryStore = new Map<string, string>();
 
 export const STORAGE_KEYS = {
   settings: "shift-cubed.settings",
@@ -9,11 +8,20 @@ export const STORAGE_KEYS = {
 } as const;
 
 async function getItem(key: string) {
-  return memoryStore.get(key) ?? null;
+  try {
+    return await AsyncStorage.getItem(key);
+  } catch (error) {
+    console.error('AsyncStorage getItem error:', error);
+    return null;
+  }
 }
 
 async function setItem(key: string, value: string) {
-  memoryStore.set(key, value);
+  try {
+    await AsyncStorage.setItem(key, value);
+  } catch (error) {
+    console.error('AsyncStorage setItem error:', error);
+  }
 }
 
 export async function loadJson<T>(key: string, fallback: T) {

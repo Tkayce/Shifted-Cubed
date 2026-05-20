@@ -1,61 +1,84 @@
-import {
-  CUBE_SIZE,
-  GRAVITY_ORDER,
-  GRID_COLS,
-  GRID_ROWS,
-  TILE_GAP,
-  TILE_SIZE,
-} from "./constants";
-import type { Cell, Gravity } from "./types";
+import { BLOCK_COLORS, BLOCK_SHAPES, CELL_GAP, CELL_SIZE, GRID_COLS, GRID_ROWS } from "./constants";
+import type { Block, BlockType, GameGrid } from "./types";
 
-export function keyForCell({ col, row }: Cell) {
-  return `${col}:${row}`;
+/**
+ * Create an empty game grid
+ */
+export function createEmptyGrid(): GameGrid {
+  return Array(GRID_ROWS)
+    .fill(null)
+    .map(() =>
+      Array(GRID_COLS)
+        .fill(null)
+        .map(() => ({ filled: false, color: null }))
+    );
 }
 
-export function clamp(value: number, min: number, max: number) {
-  return Math.max(min, Math.min(max, value));
-}
+/**
+ * Generate a random block with weighted probability (Z-shape appears less often)
+ */
+export function generateRandomBlock(): Block {
+  // Weighted block pool: Z appears less frequently (about half the rate of others)
+  const weightedPool = [
+    "I", "I", "I",
+    "O", "O", "O",
+    "T", "T", "T",
+    "L", "L", "L",
+    "J", "J", "J",
+    "S", "S", "S",
+    "Z", "Z"
+  ] as const;
+  
+  const type = weightedPool[Math.floor(Math.random() * weightedPool.length)] as BlockType;
+  const color = BLOCK_COLORS[type];
+  const cells = BLOCK_SHAPES[type];
 
-export function manhattan(a: Cell, b: Cell) {
-  return Math.abs(a.col - b.col) + Math.abs(a.row - b.row);
-}
+  // Start at top center
+  const position = {
+    col: Math.floor(GRID_COLS / 2) - 1,
+    row: 0,
+  };
 
-export function rotateGravity(current: Gravity) {
-  const currentIndex = GRAVITY_ORDER.indexOf(current);
-  return GRAVITY_ORDER[(currentIndex + 1) % GRAVITY_ORDER.length];
-}
-
-export function gravityToVector(gravity: Gravity) {
-  switch (gravity) {
-    case "down":
-      return { dc: 0, dr: 1 };
-    case "left":
-      return { dc: -1, dr: 0 };
-    case "up":
-      return { dc: 0, dr: -1 };
-    case "right":
-      return { dc: 1, dr: 0 };
-    default:
-      throw new Error(`Unsupported gravity value: ${gravity}`);
-  }
-}
-
-export function isInsideGrid({ col, row }: Cell) {
-  return col >= 0 && col < GRID_COLS && row >= 0 && row < GRID_ROWS;
-}
-
-export function createRng(seed: number) {
-  let value = seed >>> 0;
-
-  return () => {
-    value = (value * 1664525 + 1013904223) >>> 0;
-    return value / 4294967296;
+  return {
+    type,
+    cells,
+    color,
+    position,
+    rotation: 0,
   };
 }
 
-export function getCellOffset(cell: Cell) {
-  const x = cell.col * (TILE_SIZE + TILE_GAP) + TILE_SIZE / 2 - CUBE_SIZE / 2;
-  const y = cell.row * (TILE_SIZE + TILE_GAP) + TILE_SIZE / 2 - CUBE_SIZE / 2;
-
+/**
+ * Calculate pixel position for a cell
+ */
+export function getCellPixelPosition(col: number, row: number) {
+  const x = col * (CELL_SIZE + CELL_GAP);
+  const y = row * (CELL_SIZE + CELL_GAP);
   return { x, y };
+}
+
+/**
+ * Calculate score based on rows cleared
+ */
+export function calculateScore(rowsCleared: number, combo: number): number {
+  const basePoints = {
+    1: 100,
+    2: 300,
+    3: 500,
+    4: 800, // Tetris!
+  };
+
+  const points = basePoints[rowsCleared as keyof typeof basePoints] || 0;
+  const comboMultiplier = 1 + (combo * 0.5);
+
+  return Math.floor(points * comboMultiplier);
+}
+
+/**
+ * Get current fall speed based on level
+ */
+export function getFallSpeed(level: number): number {
+  const baseSpeed = 1000;
+  const speedDecrease = level * 50;
+  return Math.max(200, baseSpeed - speedDecrease);
 }

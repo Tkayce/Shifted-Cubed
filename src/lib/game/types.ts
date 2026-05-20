@@ -1,38 +1,31 @@
+// Block Stack Game Types
+
 export type Cell = {
   col: number;
   row: number;
 };
 
-export type Gravity = "down" | "left" | "up" | "right";
+export type BlockType = "I" | "O" | "T" | "L" | "J" | "S" | "Z";
 
-export type GameMode = "campaign" | "endless";
-
-export type NumberedCube = {
-  number: number;
-  cell: Cell;
-  collected: boolean;
+export type BlockCell = {
+  col: number;
+  row: number;
 };
 
-export type Level = {
-  id: string;
-  name: string;
-  seed: number;
-  difficulty: number;
-  pathLength: number;
-  spawn: Cell;
-  cubes: NumberedCube[];
-  platforms: Cell[];
-  platformSet: Set<string>;
-  scenicCells: Cell[];
-  lore: string;
+export type Block = {
+  type: BlockType;
+  cells: BlockCell[]; // Relative positions of cells in the block
+  color: string;
+  position: Cell; // Anchor position (top-left of bounding box)
+  rotation: number; // 0, 1, 2, or 3 (0°, 90°, 180°, 270°)
 };
 
-export type ShiftOutcome = {
-  fallen: boolean;
-  hitCube: NumberedCube | null;
-  restingCell: Cell | null;
-  travelDistance: number;
+export type GridCell = {
+  filled: boolean;
+  color: string | null;
 };
+
+export type GameGrid = GridCell[][];
 
 export type SettingsState = {
   soundEnabled: boolean;
@@ -40,11 +33,19 @@ export type SettingsState = {
   darkModeEnabled: boolean;
 };
 
+export type GameState = {
+  score: number;
+  rowsCleared: number;
+  level: number;
+  combo: number;
+  isGameOver: boolean;
+};
+
 export type SessionStats = {
   score: number;
+  sector: number;
   combo: number;
   lives: number;
-  sector: number;
   clearedLevels: number;
   statusText: string;
 };

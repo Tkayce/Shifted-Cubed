@@ -268,13 +268,12 @@ export default function SettingsScreen() {
               s`text-sm font-bold mb-1`,
               { color: isDarkMode ? "#cbd5e1" : "#475569" }
             ]}>
-              Cube Collector v1.0.0
+              Shifted-Cubed v1.0.0
             </Text>
             <Text style={[
               s`text-xs leading-5`,
               { color: isDarkMode ? "#94a3b8" : "#64748b" }
             ]}>
-              Built with React Native, Expo, and Reanimated. Dark and light mode themes included.
             </Text>
           </View>
         </View>

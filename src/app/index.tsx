@@ -40,7 +40,7 @@ export default function WelcomeScreen() {
       <View style={s`max-w-2xl mx-auto w-full`}>
         {/* Main Card */}
         <View style={[
-          s`rounded-3xl border-2 p-8`,
+          s`rounded-3xl border-2 p-6`,
           { 
             borderColor: isDarkMode ? "#475569" : "#cbd5e1",
             backgroundColor: isDarkMode ? "#1e293b" : "#f8fafc",
@@ -50,76 +50,76 @@ export default function WelcomeScreen() {
           }
         ]}>
           {/* Header */}
-          <View style={s`items-center mb-6`}>
+          <View style={s`items-center mb-4`}>
             <View style={[
-              s`rounded-2xl border-2 p-4 mb-4`,
+              s`rounded-2xl border-2 p-3 mb-3`,
               { 
-                borderColor: isDarkMode ? "#0ea5e9" : "#0284c7",
+                borderColor: theme.border.primary,
                 backgroundColor: isDarkMode ? "#1f2937" : "#e2e8f0"
               }
             ]}>
-              <Ionicons name="cube" size={48} color={theme.accent.secondary} />
+              <Ionicons name="grid" size={36} color={theme.accent.secondary} />
             </View>
             <Text style={[
-              s`text-xs uppercase tracking-[4px] font-black`,
-              { color: isDarkMode ? "#22d3ee" : "#0284c7" }
+              s`text-[10px] uppercase tracking-[3px] font-black`,
+              { color: theme.accent.secondary }
             ]}>
-              CUBE COLLECTOR
+              Shifted-Cubed
             </Text>
             <Text style={[
-              s`mt-4 text-4xl font-black leading-tight text-center`,
+              s`mt-3 text-3xl font-black leading-tight text-center`,
               { color: isDarkMode ? "#ffffff" : "#0f172a" }
             ]}>
-              Collect All Cubes.{"\n"}Master Gravity.
+              Stack Blocks.{"\n"}Clear Rows. Win.
             </Text>
           </View>
 
           {/* Description */}
           <Text style={[
-            s`mt-4 text-base leading-7 text-center font-medium`,
+            s`mt-3 text-sm leading-6 text-center font-medium`,
             { color: isDarkMode ? "#cbd5e1" : "#475569" }
           ]}>
-            A sequence-based gravity puzzle game. Tap to rotate gravity and guide your cube to collect numbered cubes in order. Can you master all 6 sectors?
+            A fast-paced block stacking game. Drag falling blocks to build rows, clear them for points, and climb the levels. How high can you score?
           </Text>
 
           {/* Stats Card */}
           <View style={[
-            s`mt-8 rounded-2xl border-2 px-6 py-5`,
+            s`mt-6 rounded-2xl border-2 px-5 py-4`,
             { 
               borderColor: isDarkMode ? "#334155" : "#cbd5e1",
               backgroundColor: isDarkMode ? "#0f172a" : "#f1f5f9"
             }
           ]}>
             <Text style={[
-              s`text-xs uppercase tracking-[2px] font-black mb-4`,
+              s`text-[10px] uppercase tracking-[2px] font-black mb-3`,
               { color: isDarkMode ? "#22d3ee" : "#0284c7" }
             ]}>
               {onboardingSeen ? "YOUR PROGRESS" : "READY TO START"}
             </Text>
-            <View style={s`flex-row justify-between items-center mb-3`}>
+            <View style={s`flex-row justify-between items-center mb-2`}>
               <View>
                 <Text style={[
-                  s`text-xs uppercase tracking-[1px] font-bold`,
+                  s`text-[10px] uppercase tracking-[1px] font-bold`,
                   { color: isDarkMode ? "#cbd5e1" : "#475569" }
                 ]}>
                   BEST SCORE
                 </Text>
                 <Text style={[
-                  s`mt-1 text-2xl font-black`,
-                  { color: isDarkMode ? "#22d3ee" : "#0284c7" }
+                  s`mt-1 text-xl font-black`,
+                  { color: theme.accent.secondary }
                 ]}>
                   {progress.bestScore}
                 </Text>
               </View>
               <View>
                 <Text style={[
-                  s`text-xs uppercase tracking-[1px] font-bold`,
+                  s`text-[10px] uppercase tracking-[1px] font-bold`,
                   { color: isDarkMode ? "#cbd5e1" : "#475569" }
                 ]}>
-                  HIGHEST SECTOR
+                  HIGHEST LEVEL
                 </Text>
                 <Text style={[
-                  s`mt-1 text-2xl font-black`,
+                  s`mt-1 text-xl font-black`,
                   { color: isDarkMode ? "#10b981" : "#059669" }
                 ]}>
                   {progress.highestSector}
@@ -127,25 +127,25 @@ export default function WelcomeScreen() {
               </View>
             </View>
             <View style={[
-              s`pt-3 border-t`,
+              s`pt-2 border-t`,
               { borderColor: isDarkMode ? "#334155" : "#e2e8f0" }
             ]}>
               <Text style={[
-                s`text-sm leading-6 font-medium`,
+                s`text-xs leading-5 font-medium`,
                 { color: isDarkMode ? "#cbd5e1" : "#475569" }
               ]}>
                 {progress.lastSession
-                  ? `Last run: Sector ${progress.lastSession.sector} • Score ${progress.lastSession.score}`
-                  : "No runs completed yet. Start your first campaign."}
+                  ? `Last run: Level ${progress.lastSession.sector} • Score ${progress.lastSession.score}`
+                  : "No runs completed yet. Start your first game."}
               </Text>
             </View>
           </View>
 
           {/* Action Buttons */}
-          <View style={s`mt-8 gap-3`}>
+          <View style={s`mt-6 gap-2.5`}>
             <Pressable onPress={handleStartGame}>
               <View style={[
-                s`rounded-2xl px-6 py-4 flex-row items-center justify-center gap-2`,
+                s`rounded-2xl px-5 py-3 flex-row items-center justify-center gap-2`,
                 { 
                   backgroundColor: isDarkMode ? "#06b6d4" : "#0284c7",
                   shadowColor: isDarkMode ? "#06b6d4" : "#0284c7",
@@ -153,9 +153,9 @@ export default function WelcomeScreen() {
                   shadowRadius: 12
                 }
               ]}>
-                <Ionicons name="play" size={20} color={isDarkMode ? "#020617" : "#f8fafc"} />
+                <Ionicons name="play" size={18} color={isDarkMode ? "#020617" : "#f8fafc"} />
                 <Text style={[
-                  s`text-lg pl-2 font-black tracking-wide`,
+                  s`text-base pl-1 font-black tracking-wide`,
                   { color: isDarkMode ? "#020617" : "#f8fafc" }
                 ]}>
                   START GAME
@@ -174,98 +174,151 @@ export default function WelcomeScreen() {
               ]}>
                 <ScrollView contentContainerStyle={s`flex-grow justify-center items-center pb-12`}>
                   <View style={[
-                    s`w-full max-w-md rounded-3xl border-2 p-8`,
+                    s`w-full max-w-md rounded-3xl border-2 p-6`,
                     { 
                       borderColor: isDarkMode ? "#0ea5e9" : "#0284c7",
                       backgroundColor: isDarkMode ? "#1e293b" : "#f1f5f9"
                     }
                   ]}>
                     {/* Header */}
-                    <View style={s`items-center mb-6`}>
+                    <View style={s`items-center mb-5`}>
                       <Text style={[
-                        s`text-3xl font-black text-center`,
+                        s`text-2xl font-black text-center`,
                         { color: isDarkMode ? "#ffffff" : "#0f172a" }
                       ]}>How to Play</Text>
                       <Text style={[
-                        s`text-xs uppercase tracking-widest font-bold mt-2`,
+                        s`text-[10px] uppercase tracking-widest font-bold mt-2`,
+                        { color: theme.accent.secondary }
+                      ]}>Block Stacking Mechanics</Text>
+                    </View>
+
+                    {/* Best Score Stats */}
+                    <View style={[
+                      s`mb-5 rounded-2xl border-2 px-4 py-3`,
+                      { 
+                        borderColor: isDarkMode ? "#334155" : "#cbd5e1",
+                        backgroundColor: isDarkMode ? "#0f172a" : "#f1f5f9"
+                      }
+                    ]}>
+                      <Text style={[
+                        s`text-[10px] uppercase tracking-[2px] font-black mb-3`,
                         { color: isDarkMode ? "#22d3ee" : "#0284c7" }
-                      ]}>Master Cube Collection</Text>
+                      ]}>YOUR BEST</Text>
+                      <View style={s`flex-row justify-around items-center`}>
+                        <View style={s`items-center`}>
+                          <Text style={[
+                            s`text-[10px] uppercase tracking-[1px] font-bold`,
+                            { color: isDarkMode ? "#cbd5e1" : "#475569" }
+                          ]}>BEST SCORE</Text>
+                          <Text style={[
+                            s`mt-1 text-xl font-black`,
+                            { color: theme.accent.secondary }
+                          ]}>{progress.bestScore}</Text>
+                        </View>
+                        <View style={s`items-center`}>
+                          <Text style={[
+                            s`text-[10px] uppercase tracking-[1px] font-bold`,
+                            { color: isDarkMode ? "#cbd5e1" : "#475569" }
+                          ]}>LEVEL</Text>
+                          <Text style={[
+                            s`mt-1 text-xl font-black`,
+                            { color: isDarkMode ? "#10b981" : "#059669" }
+                          ]}>{progress.highestSector}</Text>
+                        </View>
+                      </View>
                     </View>
 
                     {/* Core Mechanics */}
                     <View style={[
-                      s`mb-6 rounded-2xl border p-4`,
+                      s`mb-4 rounded-2xl border p-3`,
                       { 
-                        borderColor: isDarkMode ? "#0ea5e9" : "#0284c7",
+                        borderColor: theme.border.primary,
                         backgroundColor: isDarkMode ? "#1f2937/50" : "#e2e8f0/50"
                       }
                     ]}>
                       <Text style={[
-                        s`text-sm uppercase tracking-wider font-black mb-3`,
-                        { color: isDarkMode ? "#22d3ee" : "#0284c7" }
-                      ]}>Core Mechanic</Text>
-                      <View style={s`gap-2`}>
-                        <View style={s`flex-row items-start gap-3`}>
+                        s`text-xs uppercase tracking-wider font-black mb-2`,
+                        { color: theme.accent.secondary }
+                      ]}>How It Works</Text>
+                      <View style={s`gap-2 pl-2`}>
+                        <View style={s`flex-row items-start gap-2`}>
                           <View style={[
-                            s`w-6 h-6 rounded-full items-center justify-center`,
-                            { backgroundColor: isDarkMode ? "#06b6d4" : "#0284c7" }
-                          ]}>
-                            <Text style={[
-                              s`text-xs font-black`,
-                              { color: isDarkMode ? "#020617" : "#f8fafc" }
-                            ]}>1</Text>
-                          </View>
+                            s`w-1.5 h-1.5 rounded-full flex-shrink-0 mt-1.5`,
+                            { backgroundColor: theme.accent.primary }
+                          ]} />
                           <View style={s`flex-1`}>
                             <Text style={[
-                              s`font-bold text-sm`,
+                              s`font-bold text-xs leading-5`,
                               { color: isDarkMode ? "#ffffff" : "#0f172a" }
-                            ]}>TAP to rotate gravity</Text>
+                            ]}>Blocks fall from the top</Text>
                             <Text style={[
-                              s`text-xs mt-1`,
+                              s`text-[10px] mt-0.5 leading-4`,
                               { color: isDarkMode ? "#94a3b8" : "#64748b" }
-                            ]}>Each tap rotates gravity 90° clockwise</Text>
+                            ]}>Different shaped blocks drop automatically</Text>
                           </View>
                         </View>
-                        <View style={s`flex-row items-start gap-3`}>
+                        <View style={s`flex-row items-start gap-2`}>
                           <View style={[
-                            s`w-6 h-6 rounded-full items-center justify-center`,
-                            { backgroundColor: isDarkMode ? "#06b6d4" : "#0284c7" }
-                          ]}>
-                            <Text style={[
-                              s`text-xs font-black`,
-                              { color: isDarkMode ? "#020617" : "#f8fafc" }
-                            ]}>2</Text>
-                          </View>
+                            s`w-1.5 h-1.5 rounded-full flex-shrink-0 mt-1.5`,
+                            { backgroundColor: theme.accent.primary }
+                          ]} />
                           <View style={s`flex-1`}>
                             <Text style={[
-                              s`font-bold text-sm`,
+                              s`font-bold text-xs leading-5`,
                               { color: isDarkMode ? "#ffffff" : "#0f172a" }
-                            ]}>CUBE FALLS automatically</Text>
+                            ]}>Drag left or right to move</Text>
                             <Text style={[
-                              s`text-xs mt-1`,
+                              s`text-[10px] mt-0.5 leading-4`,
                               { color: isDarkMode ? "#94a3b8" : "#64748b" }
-                            ]}>Your cube falls until landing on a platform</Text>
+                            ]}>Swipe horizontally to position blocks</Text>
                           </View>
                         </View>
-                        <View style={s`flex-row items-start gap-3`}>
+                        <View style={s`flex-row items-start gap-2`}>
                           <View style={[
-                            s`w-6 h-6 rounded-full items-center justify-center`,
-                            { backgroundColor: isDarkMode ? "#3b82f6" : "#1e40af" }
-                          ]}>
-                            <Text style={[
-                              s`text-xs font-black`,
-                              { color: isDarkMode ? "#f0f9ff" : "#f0f9ff" }
-                            ]}>1</Text>
-                          </View>
+                            s`w-1.5 h-1.5 rounded-full flex-shrink-0 mt-1.5`,
+                            { backgroundColor: theme.accent.primary }
+                          ]} />
                           <View style={s`flex-1`}>
                             <Text style={[
-                              s`font-bold text-sm`,
+                              s`font-bold text-xs leading-5`,
                               { color: isDarkMode ? "#ffffff" : "#0f172a" }
-                            ]}>COLLECT blue cube (#1)</Text>
+                            ]}>Drag down to drop faster</Text>
                             <Text style={[
-                              s`text-xs mt-1`,
+                              s`text-[10px] mt-0.5 leading-4`,
                               { color: isDarkMode ? "#94a3b8" : "#64748b" }
-                            ]}>Land on it to collect and progress!</Text>
+                            ]}>Swipe down to make blocks fall quicker</Text>
+                          </View>
+                        </View>
+                        <View style={s`flex-row items-start gap-2`}>
+                          <View style={[
+                            s`w-1.5 h-1.5 rounded-full flex-shrink-0 mt-1.5`,
+                            { backgroundColor: theme.accent.primary }
+                          ]} />
+                          <View style={s`flex-1`}>
+                            <Text style={[
+                              s`font-bold text-xs leading-5`,
+                              { color: isDarkMode ? "#ffffff" : "#0f172a" }
+                            ]}>Press Rotate button</Text>
+                            <Text style={[
+                              s`text-[10px] mt-0.5 leading-4`,
+                              { color: isDarkMode ? "#94a3b8" : "#64748b" }
+                            ]}>Rotate blocks to fit them into gaps</Text>
+                          </View>
+                        </View>
+                        <View style={s`flex-row items-start gap-2`}>
+                          <View style={[
+                            s`w-1.5 h-1.5 rounded-full flex-shrink-0 mt-1.5`,
+                            { backgroundColor: theme.accent.primary }
+                          ]} />
+                          <View style={s`flex-1`}>
+                            <Text style={[
+                              s`font-bold text-xs leading-5`,
+                              { color: isDarkMode ? "#ffffff" : "#0f172a" }
+                            ]}>Clear rows to score points</Text>
+                            <Text style={[
+                              s`text-[10px] mt-0.5 leading-4`,
+                              { color: isDarkMode ? "#94a3b8" : "#64748b" }
+                            ]}>Complete horizontal rows disappear</Text>
                           </View>
                         </View>
                       </View>
@@ -273,171 +326,67 @@ export default function WelcomeScreen() {
 
                     {/* Important Rules */}
                     <View style={[
-                      s`mb-6 rounded-2xl border p-4`,
+                      s`mb-4 rounded-2xl border p-3`,
                       { 
                         borderColor: isDarkMode ? "#f87171" : "#dc2626",
                         backgroundColor: isDarkMode ? "#450a0a/30" : "#fee2e2/50"
                       }
                     ]}>
                       <Text style={[
-                        s`text-sm uppercase tracking-wider font-black mb-3`,
-                        { color: isDarkMode ? "#f87171" : "#dc2626" }
-                      ]}>Collection Sequence</Text>
-                      <View style={s`gap-2`}>
-                        <View style={s`flex-row items-start gap-2`}>
-                          <Text style={[
-                            s`text-lg font-black`,
-                            { color: isDarkMode ? "#3b82f6" : "#1e40af" }
-                          ]}>1️⃣</Text>
-                          <Text style={[
-                            s`text-sm flex-1`,
-                            { color: isDarkMode ? "#ffffff" : "#0f172a" }
-                          ]}>Collect the <Text style={[
-                            s`font-black`,
-                            { color: isDarkMode ? "#3b82f6" : "#1e40af" }
-                          ]}>blue</Text> cube first</Text>
-                        </View>
-                        <View style={s`flex-row items-start gap-2`}>
-                          <Text style={[
-                            s`text-lg font-black`,
-                            { color: isDarkMode ? "#10b981" : "#065f46" }
-                          ]}>2️⃣</Text>
-                          <Text style={[
-                            s`text-sm flex-1`,
-                            { color: isDarkMode ? "#ffffff" : "#0f172a" }
-                          ]}>Then collect the <Text style={[
-                            s`font-black`,
-                            { color: isDarkMode ? "#10b981" : "#065f46" }
-                          ]}>green</Text> cube</Text>
-                        </View>
-                        <View style={s`flex-row items-start gap-2`}>
-                          <Text style={[
-                            s`text-lg font-black`,
-                            { color: isDarkMode ? "#f59e0b" : "#92400e" }
-                          ]}>3️⃣</Text>
-                          <Text style={[
-                            s`text-sm flex-1`,
-                            { color: isDarkMode ? "#ffffff" : "#0f172a" }
-                          ]}>Finally collect the <Text style={[
-                            s`font-black`,
-                            { color: isDarkMode ? "#f59e0b" : "#92400e" }
-                          ]}>orange</Text> cube to complete the level!</Text>
-                        </View>
-                      </View>
-                    </View>
-
-                    {/* Pro Tips */}
-                    <View style={[
-                      s`mb-6 rounded-2xl border p-4`,
-                      { 
-                        borderColor: isDarkMode ? "#f87171" : "#dc2626",
-                        backgroundColor: isDarkMode ? "#450a0a/30" : "#fee2e2/50"
-                      }
-                    ]}>
-                      <Text style={[
-                        s`text-sm uppercase tracking-wider font-black mb-3`,
+                        s`text-xs uppercase tracking-wider font-black mb-2`,
                         { color: isDarkMode ? "#f87171" : "#dc2626" }
                       ]}>Important Rules</Text>
-                      <View style={s`gap-2`}>
+                      <View style={s`gap-2 pl-2`}>
                         <View style={s`flex-row items-start gap-2`}>
-                          <Text style={s`text-lg font-black`}>⚠️</Text>
+                          <View style={[
+                            s`w-1.5 h-1.5 rounded-full flex-shrink-0 mt-1.5`,
+                            { backgroundColor: isDarkMode ? "#ef4444" : "#dc2626" }
+                          ]} />
                           <Text style={[
-                            s`text-sm flex-1`,
+                            s`text-xs flex-1 leading-5`,
                             { color: isDarkMode ? "#ffffff" : "#0f172a" }
-                          ]}>If the cube falls off the board, you lose a LIFE</Text>
+                          ]}>If blocks stack to the top, the game ends</Text>
                         </View>
                         <View style={s`flex-row items-start gap-2`}>
-                          <Text style={s`text-lg font-black`}>⚠️</Text>
+                          <View style={[
+                            s`w-1.5 h-1.5 rounded-full flex-shrink-0 mt-1.5`,
+                            { backgroundColor: isDarkMode ? "#10b981" : "#059669" }
+                          ]} />
                           <Text style={[
-                            s`text-sm flex-1`,
+                            s`text-xs flex-1 leading-5`,
                             { color: isDarkMode ? "#ffffff" : "#0f172a" }
-                          ]}>Collect cubes out of order and nothing happens</Text>
+                          ]}>Clear multiple rows for combo bonuses</Text>
                         </View>
                         <View style={s`flex-row items-start gap-2`}>
-                          <Text style={s`text-lg font-black`}>⚠️</Text>
+                          <View style={[
+                            s`w-1.5 h-1.5 rounded-full flex-shrink-0 mt-1.5`,
+                            { backgroundColor: isDarkMode ? "#a855f7" : "#7e22ce" }
+                          ]} />
                           <Text style={[
-                            s`text-sm flex-1`,
+                            s`text-xs flex-1 leading-5`,
                             { color: isDarkMode ? "#ffffff" : "#0f172a" }
-                          ]}>You have <Text style={[
-                            s`font-black`,
-                            { color: isDarkMode ? "#fca5a5" : "#991b1b" }
-                          ]}>3 LIVES</Text> per run</Text>
-                        </View>
-                      </View>
-                    </View>
-
-                    {/* Scoring & Progression */}
-                    <View style={[
-                      s`mb-6 rounded-2xl border p-4`,
-                      { 
-                        borderColor: isDarkMode ? "#34d399" : "#10b981",
-                        backgroundColor: isDarkMode ? "#064e3b/30" : "#d1fae5/50"
-                      }
-                    ]}>
-                      <Text style={[
-                        s`text-sm uppercase tracking-wider font-black mb-3`,
-                        { color: isDarkMode ? "#34d399" : "#059669" }
-                      ]}>Scoring & Progression</Text>
-                      <View style={s`gap-2`}>
-                        <View style={s`flex-row items-start gap-2`}>
-                          <Text style={[
-                            s`font-black`,
-                            { color: isDarkMode ? "#34d399" : "#059669" }
-                          ]}>✓</Text>
-                          <Text style={[
-                            s`text-sm flex-1`,
-                            { color: isDarkMode ? "#ffffff" : "#0f172a" }
-                          ]}><Text style={[
-                            s`font-black`,
-                            { color: isDarkMode ? "#3b82f6" : "#1e40af" }
-                          ]}>Cube Collection</Text> = 200+ points + bonuses</Text>
-                        </View>
-                        <View style={s`flex-row items-start gap-2`}>
-                          <Text style={[
-                            s`font-black`,
-                            { color: isDarkMode ? "#34d399" : "#059669" }
-                          ]}>✓</Text>
-                          <Text style={[
-                            s`text-sm flex-1`,
-                            { color: isDarkMode ? "#ffffff" : "#0f172a" }
-                          ]}><Text style={[
-                            s`font-black`,
-                            { color: isDarkMode ? "#a5f3fc" : "#164e63" }
-                          ]}>Combo</Text> = consecutive moves without falling</Text>
-                        </View>
-                        <View style={s`flex-row items-start gap-2`}>
-                          <Text style={[
-                            s`font-black`,
-                            { color: isDarkMode ? "#34d399" : "#059669" }
-                          ]}>✓</Text>
-                          <Text style={[
-                            s`text-sm flex-1`,
-                            { color: isDarkMode ? "#ffffff" : "#0f172a" }
-                          ]}><Text style={[
-                            s`font-black`,
-                            { color: isDarkMode ? "#a5f3fc" : "#164e63" }
-                          ]}>CAMPAIGN MODE</Text> has 6 sectors of increasing difficulty</Text>
+                          ]}>Level increases every 10 rows cleared</Text>
                         </View>
                       </View>
                     </View>
 
                     {/* Tips */}
                     <View style={[
-                      s`mb-6 rounded-2xl border p-4`,
+                      s`mb-4 rounded-2xl border p-3`,
                       { 
-                        borderColor: isDarkMode ? "#38bdf8" : "#0284c7",
-                        backgroundColor: isDarkMode ? "#1e3a5f/30" : "#dbeafe/50"
+                        borderColor: theme.border.primary,
+                        backgroundColor: isDarkMode ? "#1f2937/50" : "#e2e8f0/50"
                       }
                     ]}>
                       <Text style={[
-                        s`text-sm uppercase tracking-wider font-black mb-3`,
-                        { color: isDarkMode ? "#38bdf8" : "#0284c7" }
+                        s`text-xs uppercase tracking-wider font-black mb-2`,
+                        { color: theme.accent.secondary }
                       ]}>Pro Tips</Text>
                       <Text style={[
-                        s`text-xs leading-5`,
-                        { color: isDarkMode ? "#bfdbfe" : "#164e63" }
+                        s`text-[10px] leading-4 pl-2`,
+                        { color: isDarkMode ? "#cbd5e1" : "#475569" }
                       ]}>
-                        • Plan your route to collect cubes in order{"\n"}• Build combos for bonus multipliers{"\n"}• Use UNDO if you make a mistake{"\n"}• Clear all 6 sectors for ultimate victory!
+                        • Move blocks quickly to position them precisely{"\n"}• Use the Rotate button to change orientation{"\n"}• Clear 4 rows at once for maximum points{"\n"}• Build combos by clearing rows consecutively{"\n"}• Speed increases with level progression
                       </Text>
                     </View>
 
@@ -447,23 +396,23 @@ export default function WelcomeScreen() {
                         {
                           width: '100%',
                           borderRadius: 12,
-                          backgroundColor: isDarkMode ? "#06b6d4" : "#0284c7",
-                          paddingVertical: 16,
+                          backgroundColor: theme.accent.primary,
+                          paddingVertical: 12,
                           flexDirection: 'row',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          gap: 8,
+                          gap: 6,
                           opacity: pressed ? 0.8 : 1,
-                          shadowColor: isDarkMode ? "#06b6d4" : "#0284c7",
+                          shadowColor: theme.accent.primary,
                           shadowOpacity: 0.4,
                           shadowRadius: 8
                         }
                       ]}
                       onPress={handleSkip}
                     >
-                      <Ionicons name="play" size={18} color={isDarkMode ? "#020617" : "#f8fafc"} />
+                      <Ionicons name="play" size={16} color={isDarkMode ? "#020617" : "#f8fafc"} />
                       <Text style={[
-                        s`text-base font-black tracking-wide`,
+                        s`text-sm font-black tracking-wide`,
                         { color: isDarkMode ? "#020617" : "#f8fafc" }
                       ]}>LET'S PLAY</Text>
                     </Pressable>

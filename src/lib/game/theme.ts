@@ -7,73 +7,73 @@ export type Theme = "dark" | "light";
 
 export const themeColors = {
   dark: {
-    // Base colors
+    // Base colors - Modern dark theme
     bg: {
-      primary: "#020617", // slate-950
-      secondary: "#0f172a", // slate-900
-      tertiary: "#1e293b", // slate-800
-      overlay: "#000000cc", // black with 80% opacity
+      primary: "#0a0e27", // Deep navy/purple
+      secondary: "#1a1f3a", // Dark blue-gray
+      tertiary: "#252d4a", // Medium dark blue
+      overlay: "#000000dd", // black with 87% opacity
     },
     text: {
-      primary: "#ffffff", // white
-      secondary: "#cbd5e1", // slate-200
-      muted: "#94a3b8", // slate-400
-      dimmed: "#64748b", // slate-500
+      primary: "#f5f7fa", // Off-white
+      secondary: "#d4d8e0", // Light gray
+      muted: "#9ca3af", // Medium gray
+      dimmed: "#6b7280", // Dim gray
     },
     accent: {
-      primary: "#06b6d4", // cyan-500
-      secondary: "#22d3ee", // cyan-400
-      success: "#10b981", // emerald-500
-      warning: "#f59e0b", // amber-500
-      error: "#ef4444", // red-500
+      primary: "#7c3aed", // Vibrant purple
+      secondary: "#a78bfa", // Light purple
+      success: "#10b981", // Emerald
+      warning: "#f59e0b", // Amber
+      error: "#ef4444", // Red
     },
     border: {
-      primary: "#0ea5e9", // sky-400
-      secondary: "#64748b", // slate-500
-      muted: "#475569", // slate-600
+      primary: "#7c3aed", // Vibrant purple
+      secondary: "#6b7280", // Gray
+      muted: "#4b5563", // Dark gray
     },
     toggle: {
-      onBg: "#059669", // emerald-600
-      onBorder: "#34d399", // emerald-400
+      onBg: "#10b981", // Emerald
+      onBorder: "#34d399", // Light emerald
       onKnob: "#ffffff",
-      offBg: "#475569", // slate-600
-      offBorder: "#64748b", // slate-500
-      offKnob: "#cbd5e1", // slate-200
+      offBg: "#4b5563", // Dark gray
+      offBorder: "#6b7280", // Medium gray
+      offKnob: "#d4d8e0", // Light gray
     },
   },
   light: {
-    // Base colors
+    // Base colors - Modern light theme
     bg: {
-      primary: "#f8fafc", // slate-50
-      secondary: "#f1f5f9", // slate-100
-      tertiary: "#e2e8f0", // slate-200
-      overlay: "#00000099", // black with 60% opacity
+      primary: "#fafbfc", // Almost white
+      secondary: "#f3f4f6", // Light gray
+      tertiary: "#e5e7eb", // Medium light gray
+      overlay: "#000000b8", // black with 72% opacity
     },
     text: {
-      primary: "#0f172a", // slate-900
-      secondary: "#334155", // slate-700
-      muted: "#64748b", // slate-500
-      dimmed: "#94a3b8", // slate-400
+      primary: "#111827", // Near black
+      secondary: "#374151", // Dark gray
+      muted: "#6b7280", // Medium gray
+      dimmed: "#9ca3af", // Light gray
     },
     accent: {
-      primary: "#0891b2", // cyan-600
-      secondary: "#06b6d4", // cyan-500
-      success: "#059669", // emerald-600
-      warning: "#d97706", // amber-600
-      error: "#dc2626", // red-600
+      primary: "#7c3aed", // Vibrant purple
+      secondary: "#8b5cf6", // Light purple
+      success: "#10b981", // Emerald
+      warning: "#d97706", // Amber
+      error: "#dc2626", // Red
     },
     border: {
-      primary: "#0284c7", // sky-600
-      secondary: "#94a3b8", // slate-400
-      muted: "#cbd5e1", // slate-200
+      primary: "#7c3aed", // Vibrant purple
+      secondary: "#d1d5db", // Light gray
+      muted: "#e5e7eb", // Very light gray
     },
     toggle: {
-      onBg: "#10b981", // emerald-500
-      onBorder: "#059669", // emerald-600
+      onBg: "#10b981", // Emerald
+      onBorder: "#059669", // Dark emerald
       onKnob: "#ffffff",
-      offBg: "#cbd5e1", // slate-200
-      offBorder: "#94a3b8", // slate-400
-      offKnob: "#64748b", // slate-500
+      offBg: "#e5e7eb", // Light gray
+      offBorder: "#d1d5db", // Medium light gray
+      offKnob: "#6b7280", // Medium gray
     },
   },
 };
