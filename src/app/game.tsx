@@ -4,25 +4,25 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Modal, Platform, Pressable, SafeAreaView, Text, Vibration, View } from "react-native";
 import { PanGestureHandler, State } from "react-native-gesture-handler";
 import Animated, {
-  runOnJS,
-  useAnimatedStyle,
-  useSharedValue,
-  withSpring,
-  withTiming
+    runOnJS,
+    useAnimatedStyle,
+    useSharedValue,
+    withSpring,
+    withTiming
 } from "react-native-reanimated";
 import { s } from "react-native-wind";
 import { ToggleRow } from "../components/ui/ToggleRow";
 import { useAppState } from "../lib/game/AppProvider";
 import { CELL_GAP, CELL_SIZE, GRID_COLS, GRID_ROWS } from "../lib/game/constants";
 import {
-  canPlaceBlock,
-  clearRows,
-  findCompleteRows,
-  isGameOver,
-  lockBlockInGrid,
-  moveBlockDown,
-  moveBlockHorizontal,
-  rotateBlock,
+    canPlaceBlock,
+    clearRows,
+    findCompleteRows,
+    isGameOver,
+    lockBlockInGrid,
+    moveBlockDown,
+    moveBlockHorizontal,
+    rotateBlock,
 } from "../lib/game/physics";
 import { soundManager } from "../lib/game/sound";
 import { getScreenClasses, getTheme } from "../lib/game/theme";
@@ -334,7 +334,7 @@ export default function GameScreen() {
       <View style={s`flex-1`}>
         {/* Header */}
         <View style={[
-          s`flex-row gap-2 px-3 pt-2 pb-2 mt-2 justify-between items-center border-b`,
+          s`flex-row gap-2 px-3 pt-2 pb-2 mt-4 justify-between items-center border-b`,
           { borderColor: isDarkMode ? "#334155" : "#cbd5e1" }
         ]}>
           <View style={s`flex-row items-center gap-1.5`}>
@@ -349,24 +349,24 @@ export default function GameScreen() {
           <View style={s`flex-row gap-1.5`}>
             <Pressable onPress={() => setShowSettings(true)}>
               <View style={[
-                s`rounded-lg border px-2 py-1.5`,
+                s`rounded-lg border px-1.5 py-1 mr-2`,
                 { 
                   borderColor: theme.border.primary,
                   backgroundColor: isDarkMode ? "#1e293b" : "#e2e8f0"
                 }
               ]}>
-                <Ionicons name="settings" size={18} color={theme.accent.secondary} />
+                <Ionicons name="settings" size={16} color={theme.accent.secondary} />
               </View>
             </Pressable>
             <Pressable onPress={() => setShowExitConfirm(true)}>
               <View style={[
-                s`rounded-lg border-2 px-2 py-1.5`,
+                s`rounded-lg border-2 px-1.5 py-1`,
                 { 
                   borderColor: isDarkMode ? "#ef4444" : "#dc2626",
                   backgroundColor: isDarkMode ? "#7f1d1d" : "#fee2e2"
                 }
               ]}>
-                <Ionicons name="exit" size={18} color={isDarkMode ? "#fca5a5" : "#991b1b"} />
+                <Ionicons name="exit" size={16} color={isDarkMode ? "#fca5a5" : "#991b1b"} />
               </View>
             </Pressable>
           </View>
@@ -374,7 +374,7 @@ export default function GameScreen() {
 
         {/* Score HUD */}
         <View style={[
-          s`mx-3 mt-1.5 mb-2 rounded-lg border p-2`,
+          s`mx-3 mt-2 mb-2 rounded-lg border p-2`,
           { 
             borderColor: theme.border.primary,
             backgroundColor: isDarkMode ? "#1a1f3a" : "#f3f4f6"
@@ -416,7 +416,7 @@ export default function GameScreen() {
 
         {/* Game Board */}
         <PanGestureHandler onHandlerStateChange={onGestureEvent} onGestureEvent={onGestureEvent}>
-          <View style={s`items-center mt-1`}>
+          <View style={s`items-center mt-10`}>
             <View style={[
               s`rounded-xl border-2 overflow-hidden`,
               {
@@ -508,11 +508,11 @@ export default function GameScreen() {
         </PanGestureHandler>
 
         {/* Controls */}
-        <View style={s`items-center mt-2 px-3 pb-2`}>
+        <View style={s`items-center mt-6 px-3 pb-2`}>
           <Pressable
             onPress={handleRotate}
             style={({ pressed }) => [
-              s`rounded-lg border-2 px-5 py-2 mb-1.5`,
+              s`rounded-lg border-2 px-5 py-2 mb-4`,
               {
                 borderColor: theme.accent.primary,
                 backgroundColor: pressed 
